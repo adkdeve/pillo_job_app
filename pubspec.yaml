@@ -35,6 +35,7 @@ flutter:
     - assets/icons/
     - assets/images/
     - assets/icons/nav/
+    - assets/icons/category/
 
 flutter_native_splash:
   color: "#0C192B"

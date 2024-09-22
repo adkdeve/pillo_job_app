@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 // App Color
 const primaryColor = Color(0xff0C192B);
+const color25 = Color(0xffF6F8FA);
 const color50 = Color(0xffF9FAFB);
+const color100 = Color(0xffF7F9FC);
 const color200 = Color(0xffE2E8F0);
 const color300 = Color(0xffCBD5E1);
 const color400 = Color(0xff94A3B8);
