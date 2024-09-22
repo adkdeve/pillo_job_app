@@ -50,12 +50,15 @@ class ExploreView extends GetView<ExploreController> {
         img: ic_netflix,
       ),
     ];
+  
     var selectedIndex = 0.obs;
     var category = [
       'All Jobs',
+      'Remote',
       'Full Time',
-      'Part Jobs',
+      'Part Time',
       'Freelance',
+      'Contract',
     ];
     var filter = false.obs;
     RxList<String> tags = ['Remote', 'Portmore', 'Health Care'].obs;
@@ -64,29 +67,35 @@ class ExploreView extends GetView<ExploreController> {
     ));
     return Scaffold(
       backgroundColor: color100,
-      body: SafeArea(
-        child: Column(
+      appBar: AppBar(
+        backgroundColor: color100,
+        surfaceTintColor: color100,
+        centerTitle: true,
+        title: const MyText(
+          text: 'Explore Jobs 🕵🏽‍️',
+          fontSize: 22,
+          color: primaryColor,
+          fontWeight: FontWeight.w700,
+          letterSpacing: 0.1,
+        ),
+        actions: const [NotificationBtn()],
+      ),
+      body: Obx(
+        () => Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 27, vertical: 8),
-              child: Row(
-                children: [
-                  const MyBackBtn(),
-                  const Spacer(),
-                  const MyText(
-                    text: 'Explore Jobs 🕵🏽‍️',
-                    fontSize: 22,
-                    color: primaryColor,
-                    fontWeight: FontWeight.w700,
-                    letterSpacing: 0.1,
-                  ),
-                  const Spacer(),
-                  SvgPicture.asset(
-                    ic_notification_dark,
-                  )
-                ],
-              ),
-            ),
+            // Padding(
+            //   padding:
+            //       const EdgeInsets.symmetric(horizontal: 27, vertical: 8),
+            //   child: Row(
+            //     children: [
+            //       // const MyBackBtn(),
+            //       const Spacer(),
+            //       const
+            //       const const Spacer(),
+
+            //     ],
+            //   ),
+            // ),
             defaultPadding.sbh,
             Padding(
               padding: const EdgeInsets.only(
@@ -217,7 +226,9 @@ class ExploreView extends GetView<ExploreController> {
                               label: tag,
                               onRemove: () {
                                 tags.remove(tag);
-                                print(tags);
+                                if (tags.isEmpty) {
+                                  filter.value = false;
+                                }
                                 // tags.refresh();
                               },
                             );

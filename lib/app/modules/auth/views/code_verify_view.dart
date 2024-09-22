@@ -3,6 +3,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -148,6 +149,11 @@ class CodeVerifyView extends GetView<AuthController> {
                   if (type == 'reset') {
                     Get.to(() => const AddNewPasswordView());
                   } else if (type == 'signin') {
+                    SystemChrome.setSystemUIOverlayStyle(
+                        SystemUiOverlayStyle.light.copyWith(
+                      statusBarIconBrightness: Brightness.light,
+                      statusBarColor: primaryColor,
+                    ));
                     Get.toNamed(Routes.MAIN);
                   } else if (type == 'signup') {
                     Get.to(() => const ChooseLocationView());

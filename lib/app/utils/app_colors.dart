@@ -9,6 +9,7 @@ const color200 = Color(0xffE2E8F0);
 const color300 = Color(0xffCBD5E1);
 const color400 = Color(0xff94A3B8);
 const color500 = Color(0xff6B7280);
+const color600 = Color(0xff475569);
 // const secondaryColor = Color(0xff00A4A7);
 
 // Color lightblue = const Color(0xFF0066FF).withOpacity(0.05);

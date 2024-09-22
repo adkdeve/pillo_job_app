@@ -1,6 +1,7 @@
 // ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:get/get.dart';
 import 'package:pillo/app/modules/auth/controllers/auth_controller.dart';
@@ -100,6 +101,11 @@ class ChooseIndustryView extends GetView<AuthController> {
               PrimaryButton(
                 text: 'Continue',
                 onPressed: () {
+                  SystemChrome.setSystemUIOverlayStyle(
+                      SystemUiOverlayStyle.light.copyWith(
+                    statusBarIconBrightness: Brightness.light,
+                    statusBarColor: primaryColor,
+                  ));
                   Get.toNamed(Routes.MAIN);
                 },
               ),

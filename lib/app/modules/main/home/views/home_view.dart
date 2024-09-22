@@ -83,8 +83,8 @@ class HomeView extends GetView<HomeController> {
                       fit: BoxFit.fill,
                     ),
                   ),
-                  SafeArea(
-                    child: Positioned.fill(
+                  Positioned.fill(
+                    child: SafeArea(
                       child: Column(
                         children: [
                           const topAppBar(),
@@ -310,8 +310,9 @@ class topAppBar extends StatelessWidget {
           const CircleAvatar(
             radius: 20,
             backgroundColor: blackColor,
-            backgroundImage: NetworkImage(
-                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwRPWpO-12m19irKlg8znjldmcZs5PO97B6A&s'),
+            backgroundImage: AssetImage(
+              img_dp,
+            ),
           ),
           (defaultPadding / 2).sbw,
           const Column(
@@ -335,10 +336,7 @@ class topAppBar extends StatelessWidget {
             ],
           ),
           const Spacer(),
-          IconButton(
-            onPressed: () {},
-            icon: SvgPicture.asset(ic_notification),
-          )
+          const NotificationBtn(light: true),
         ],
       ),
     );
@@ -441,8 +439,7 @@ class JobList extends StatelessWidget {
                       right: defaultPadding / 1.5,
                       top: defaultPadding / 2,
                     ),
-                    child:
-                        SvgPicture.asset(fav.value ? ic_heart_fill : ic_heart),
+                    child: SvgPicture.asset(fav.value ? ic_heart : ic_heart_un),
                   ),
                 ),
               ),
@@ -450,6 +447,7 @@ class JobList extends StatelessWidget {
           ),
           Row(
             crossAxisAlignment: CrossAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
                 padding:
@@ -472,7 +470,7 @@ class JobList extends StatelessWidget {
                   ),
                 ),
               ),
-              (defaultPadding / 2).sbw,
+              // (defaultPadding / 2).sbw,
               Container(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
@@ -494,7 +492,7 @@ class JobList extends StatelessWidget {
                   ),
                 ),
               ),
-              (defaultPadding / 2).sbw,
+              // (defaultPadding / 2).sbw,
               Container(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
@@ -516,7 +514,7 @@ class JobList extends StatelessWidget {
                   ),
                 ),
               ),
-              const Spacer(),
+              // const Spacer(),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -546,6 +544,24 @@ class JobList extends StatelessWidget {
             ],
           ),
         ],
+      ),
+    );
+  }
+}
+
+class NotificationBtn extends StatelessWidget {
+  const NotificationBtn({
+    super.key,
+    this.light = false,
+  });
+  final bool light;
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      onPressed: () {},
+      icon: SvgPicture.asset(
+        light ? ic_notification : ic_notification_dark,
       ),
     );
   }
