@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:get/get.dart';
 import 'package:pillo/app/modules/auth/views/signin_view.dart';
+import 'package:pillo/app/routes/app_pages.dart';
 import 'package:pillo/app/utils/app_colors.dart';
 import 'package:pillo/app/utils/app_config.dart';
 import 'package:pillo/app/utils/app_extension.dart';
@@ -27,14 +29,24 @@ class AuthView extends GetView<AuthController> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Align(
+              Align(
                 alignment: Alignment.centerRight,
-                child: MyText(
-                  text: 'Skip',
-                  fontSize: 16,
-                  color: red,
-                  fontWeight: FontWeight.w700,
-                  letterSpacing: 0.3,
+                child: GestureDetector(
+                  onTap: () {
+                    SystemChrome.setSystemUIOverlayStyle(
+                        SystemUiOverlayStyle.light.copyWith(
+                      statusBarIconBrightness: Brightness.light,
+                      statusBarColor: primaryColor,
+                    ));
+                    Get.toNamed(Routes.MAIN);
+                  },
+                  child: const MyText(
+                    text: 'Skip',
+                    fontSize: 16,
+                    color: red,
+                    fontWeight: FontWeight.w700,
+                    letterSpacing: 0.3,
+                  ),
                 ),
               ),
               Expanded(

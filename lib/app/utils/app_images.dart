@@ -44,6 +44,14 @@ const ic_application_filled = "assets/icons/ic_application.svg";
 const ic_notification_dark = "assets/icons/ic_notification_dark.svg";
 const ic_arrow_down = "assets/icons/ic_arrow_down.svg";
 const ic_job = "assets/icons/ic_job.svg";
+const ic_dot_more_hor = "assets/icons/ic_dot_more_hor.svg";
+const ic_fav = "assets/icons/ic_fav.svg";
+const ic_blockchain = "assets/icons/category/ic_blockchain.svg";
+const img_gallery = "assets/images/gallery.png";
+const img_submit_review = "assets/images/submit_review.png";
+const img_submit_job = "assets/images/submit_job.png";
+const ic_star = "assets/icons/ic_star.svg";
+const ic_upload_cv = "assets/icons/ic_upload_cv.svg";
 
 // $$$$$$$$$$$$$$$   job   $$$$$$$$$$$$$$$
 const ic_no_job = "assets/icons/ic_no_job.svg";

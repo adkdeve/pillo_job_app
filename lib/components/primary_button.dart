@@ -99,7 +99,7 @@ class PrimaryButton extends StatelessWidget {
                   shape: SmoothRectangleBorder(
                     smoothness: smoothness,
                     side: BorderSide(
-                        color: outlined ? primaryColor : Colors.transparent),
+                        color: outlined ? textcolor : Colors.transparent),
                     borderRadius: BorderRadius.circular(borderRadius - 4),
                   ),
                   elevation: 2.0,
@@ -110,7 +110,7 @@ class PrimaryButton extends StatelessWidget {
                   fontWeight: FontWeight.w600,
                   letterSpacing: 0.4,
                   color: outlined
-                      ? primaryColor
+                      ? textcolor
                       : disabled
                           ? disableBtntext
                           : textcolor,

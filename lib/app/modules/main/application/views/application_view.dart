@@ -21,7 +21,7 @@ class ApplicationView extends GetView<ApplicationController> {
     @override
     Widget build(BuildContext context) {
       var selectedIndex = 0.obs;
-      var noData = true.obs;
+      var noData = false.obs;
       var category = [
         'All Status',
         'Applied',

@@ -74,6 +74,13 @@ class ChooseIndustryView extends GetView<AuthController> {
                       return CheckboxListTile(
                         side: const BorderSide(width: 1, color: color300),
                         contentPadding: const EdgeInsets.all(0),
+                        fillColor: WidgetStateProperty.resolveWith((states) {
+                          if (states.contains(WidgetState.selected)) {
+                            return green;
+                          } else {
+                            return Colors.transparent;
+                          }
+                        }),
                         controlAffinity: ListTileControlAffinity.leading,
                         visualDensity: const VisualDensity(
                           horizontal: -4,

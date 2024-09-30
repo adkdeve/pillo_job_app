@@ -159,7 +159,7 @@ class SignupView extends GetView<AuthController> {
                   // disabled: controller.isButtonEnabled.value,
                   text: 'Sign Up',
                   onPressed: () {
-                    Get.to(() => const CodeVerifyView(),arguments: 'signup');
+                    Get.to(() => const CodeVerifyView(), arguments: 'signup');
                   },
                 ),
                 (defaultPadding * 1.5).sbh,
@@ -302,19 +302,21 @@ class MyBackBtn extends StatelessWidget {
   const MyBackBtn({
     super.key,
     this.onTap,
+    this.light = false,
   });
   final VoidCallback? onTap;
+  final bool light;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const ShapeDecoration(
+      decoration: ShapeDecoration(
         shape: SmoothRectangleBorder(
           smoothness: 1,
-          borderRadius: BorderRadius.all(
+          borderRadius: const BorderRadius.all(
             Radius.circular(12),
           ),
-          side: BorderSide(color: color200),
+          side: BorderSide(color: light ? whiteColor : color200),
         ),
       ),
       child: InkWell(
@@ -329,6 +331,9 @@ class MyBackBtn extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: SvgPicture.asset(
             ic_arrow_bck,
+
+            color: light ? whiteColor : null,
+            // color: light? whiteColor:nul,
             width: 24,
             height: 24,
           ),

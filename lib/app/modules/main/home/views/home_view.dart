@@ -6,6 +6,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pillo/app/modules/main/explore/views/job_details_view.dart';
+import 'package:pillo/app/modules/main/notification/views/notification_view.dart';
+import 'package:pillo/app/routes/app_pages.dart';
 import 'package:pillo/components/smooth_rectangle_border.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -374,176 +377,182 @@ class JobList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var fav = false.obs;
-    return Container(
-      // width: 100,
+    return GestureDetector(
+      onTap: () {
+        Get.to(() => const JobDetailsView());
+      },
+      child: Container(
+        // width: 100,
 
-      padding: const EdgeInsets.all(defaultPadding),
-      decoration: BoxDecoration(
-        color: whiteColor,
-        borderRadius: BorderRadius.circular(defaultPadding),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                height: 50,
-                width: 50,
-                decoration: ShapeDecoration(
-                  color: color100,
-                  shape: SmoothRectangleBorder(
-                    smoothness: 1,
-                    borderRadius: BorderRadius.circular(
-                      defaultPadding,
-                    ),
-                  ),
-                ),
-                child: Center(
-                  child: SvgPicture.asset(
-                    data.img,
-                    width: 24,
-                    height: 24,
-                  ),
-                ),
-              ),
-              const Spacer(),
-              const Column(
-                children: [
-                  MyText(
-                    text: 'Product Designer ️',
-                    fontSize: 16,
-                    color: blackColor,
-                    fontWeight: FontWeight.w600,
-                  ),
-                  MyText(
-                    text: 'Kingston, St.Andrew ️',
-                    fontSize: 14,
-                    height: 2,
-                    color: Color(0xff0A6375),
-                    fontWeight: FontWeight.w500,
-                  ),
-                ],
-              ),
-              const Spacer(
-                flex: 2,
-              ),
-              GestureDetector(
-                onTap: () {
-                  fav.value = !fav.value;
-                },
-                child: Obx(
-                  () => Padding(
-                    padding: const EdgeInsets.only(
-                      right: defaultPadding / 1.5,
-                      top: defaultPadding / 2,
-                    ),
-                    child: SvgPicture.asset(fav.value ? ic_heart : ic_heart_un),
-                  ),
-                ),
-              ),
-            ],
-          ),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
-                decoration: ShapeDecoration(
-                  color: color100,
-                  shape: SmoothRectangleBorder(
-                    smoothness: 1,
-                    borderRadius: BorderRadius.circular(
-                      defaultPadding,
-                    ),
-                  ),
-                ),
-                child: Center(
-                  child: MyText(
-                    text: data.type,
-                    fontSize: 11,
-                    color: blackColor.withOpacity(.7),
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ),
-              // (defaultPadding / 2).sbw,
-              Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
-                decoration: ShapeDecoration(
-                  color: color100,
-                  shape: SmoothRectangleBorder(
-                    smoothness: 1,
-                    borderRadius: BorderRadius.circular(
-                      defaultPadding,
-                    ),
-                  ),
-                ),
-                child: Center(
-                  child: MyText(
-                    text: data.jobType,
-                    fontSize: 11,
-                    color: blackColor.withOpacity(.7),
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ),
-              // (defaultPadding / 2).sbw,
-              Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
-                decoration: ShapeDecoration(
-                  color: color100,
-                  shape: SmoothRectangleBorder(
-                    smoothness: 1,
-                    borderRadius: BorderRadius.circular(
-                      defaultPadding,
-                    ),
-                  ),
-                ),
-                child: Center(
-                  child: MyText(
-                    text: data.posted,
-                    fontSize: 11,
-                    color: blackColor.withOpacity(.7),
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ),
-              // const Spacer(),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  MyText(
-                    text: 'Application',
-                    fontSize: 12,
-                    color: blackColor.withOpacity(.7),
-                    fontWeight: FontWeight.w500,
-                  ),
-                  4.sbh,
-                  Row(
-                    children: [
-                      SvgPicture.asset(
-                        ic_application_filled,
+        padding: const EdgeInsets.all(defaultPadding),
+        decoration: BoxDecoration(
+          color: whiteColor,
+          borderRadius: BorderRadius.circular(defaultPadding),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  height: 50,
+                  width: 50,
+                  decoration: ShapeDecoration(
+                    color: color100,
+                    shape: SmoothRectangleBorder(
+                      smoothness: 1,
+                      borderRadius: BorderRadius.circular(
+                        defaultPadding,
                       ),
-                      MyText(
-                        text: data.applications.toString(),
-                        fontSize: 14,
-                        letterSpacing: 0.7,
-                        color: blackColor,
-                        fontWeight: FontWeight.w800,
-                      ),
-                    ],
+                    ),
                   ),
-                ],
-              ),
-            ],
-          ),
-        ],
+                  child: Center(
+                    child: SvgPicture.asset(
+                      data.img,
+                      width: 24,
+                      height: 24,
+                    ),
+                  ),
+                ),
+                const Spacer(),
+                const Column(
+                  children: [
+                    MyText(
+                      text: 'Product Designer ️',
+                      fontSize: 16,
+                      color: blackColor,
+                      fontWeight: FontWeight.w600,
+                    ),
+                    MyText(
+                      text: 'Kingston, St.Andrew ️',
+                      fontSize: 14,
+                      height: 2,
+                      color: Color(0xff0A6375),
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ],
+                ),
+                const Spacer(
+                  flex: 2,
+                ),
+                GestureDetector(
+                  onTap: () {
+                    fav.value = !fav.value;
+                  },
+                  child: Obx(
+                    () => Padding(
+                      padding: const EdgeInsets.only(
+                        right: defaultPadding / 1.5,
+                        top: defaultPadding / 2,
+                      ),
+                      child:
+                          SvgPicture.asset(fav.value ? ic_heart : ic_heart_un),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
+                  decoration: ShapeDecoration(
+                    color: color100,
+                    shape: SmoothRectangleBorder(
+                      smoothness: 1,
+                      borderRadius: BorderRadius.circular(
+                        defaultPadding,
+                      ),
+                    ),
+                  ),
+                  child: Center(
+                    child: MyText(
+                      text: data.type,
+                      fontSize: 11,
+                      color: blackColor.withOpacity(.7),
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+                // (defaultPadding / 2).sbw,
+                Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
+                  decoration: ShapeDecoration(
+                    color: color100,
+                    shape: SmoothRectangleBorder(
+                      smoothness: 1,
+                      borderRadius: BorderRadius.circular(
+                        defaultPadding,
+                      ),
+                    ),
+                  ),
+                  child: Center(
+                    child: MyText(
+                      text: data.jobType,
+                      fontSize: 11,
+                      color: blackColor.withOpacity(.7),
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+                // (defaultPadding / 2).sbw,
+                Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
+                  decoration: ShapeDecoration(
+                    color: color100,
+                    shape: SmoothRectangleBorder(
+                      smoothness: 1,
+                      borderRadius: BorderRadius.circular(
+                        defaultPadding,
+                      ),
+                    ),
+                  ),
+                  child: Center(
+                    child: MyText(
+                      text: data.posted,
+                      fontSize: 11,
+                      color: blackColor.withOpacity(.7),
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+                // const Spacer(),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    MyText(
+                      text: 'Application',
+                      fontSize: 12,
+                      color: blackColor.withOpacity(.7),
+                      fontWeight: FontWeight.w500,
+                    ),
+                    4.sbh,
+                    Row(
+                      children: [
+                        SvgPicture.asset(
+                          ic_application_filled,
+                        ),
+                        MyText(
+                          text: data.applications.toString(),
+                          fontSize: 14,
+                          letterSpacing: 0.7,
+                          color: blackColor,
+                          fontWeight: FontWeight.w800,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -559,7 +568,9 @@ class NotificationBtn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      onPressed: () {},
+      onPressed: () {
+        Get.toNamed(Routes.NOTIFICATION);
+      },
       icon: SvgPicture.asset(
         light ? ic_notification : ic_notification_dark,
       ),
