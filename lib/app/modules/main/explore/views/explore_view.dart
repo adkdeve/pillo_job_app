@@ -153,6 +153,7 @@ class ExploreView extends GetView<ExploreController> {
                 ),
               ),
             ),
+          
             filter.value
                 ? Padding(
                     padding: const EdgeInsets.symmetric(

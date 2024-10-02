@@ -55,6 +55,12 @@ const ic_upload_cv = "assets/icons/ic_upload_cv.svg";
 
 // $$$$$$$$$$$$$$$   job   $$$$$$$$$$$$$$$
 const ic_no_job = "assets/icons/ic_no_job.svg";
+
+// $$$$$$$$$$$$$$$   notification   $$$$$$$$$$$$$$$
+const ic_double_tick = "assets/icons/ic_double_tick.svg";
+const ic_notification_heart = "assets/icons/ic_notification_heart.svg";
+const ic_notification_mail = "assets/icons/ic_notification_mail.svg";
+
 // $$$$$$$$$$$$$$$   fav   $$$$$$$$$$$$$$$
 const ic_no_save = "assets/icons/ic_no_save.svg";
 
@@ -68,3 +74,24 @@ const ic_term = "assets/icons/ic_term.svg";
 const ic_help = "assets/icons/ic_help.svg";
 const ic_pass = "assets/icons/ic_pass.svg";
 const ic_setting = "assets/icons/ic_setting.svg";
+
+const ic_edit_bck = "assets/icons/ic_edit_bck.svg";
+const ic_card = "assets/icons/ic_card.svg";
+const ic_cash = "assets/icons/ic_cash.svg";
+
+const ic_chat = "assets/icons/ic_chat.svg";
+const ic_whatsapp = "assets/icons/ic_whatsapp.svg";
+const ic_doc = "assets/icons/ic_doc.svg";
+const ic_doc2 = "assets/icons/ic_doc2.svg";
+const ic_lock2 = "assets/icons/ic_lock2.svg";
+const ic_bot = "assets/icons/ic_bot.svg";
+const ic_send = "assets/icons/ic_send.svg";
+const ic_link = "assets/icons/ic_link.svg";
+
+const img_edit_profile = "assets/images/edit_profile.png";
+const img_card = "assets/images/card.png";
+const img_card2 = "assets/images/card2.png";
+const img_card3 = "assets/images/card3.png";
+const img_deactive = "assets/images/deactive.png";
+const img_exit = "assets/images/exit.png";
+

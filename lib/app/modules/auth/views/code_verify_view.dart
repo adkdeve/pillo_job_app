@@ -177,7 +177,7 @@ class ResendCodeWidget extends StatefulWidget {
 }
 
 class _ResendCodeWidgetState extends State<ResendCodeWidget> {
-  int _seconds = 30;
+  int _seconds = 60;
   Timer? _timer;
 
   @override

@@ -6,7 +6,16 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
 import 'package:get/get_core/get_core.dart';
+import 'package:pillo/app/modules/auth/views/code_verify_view.dart';
+import 'package:pillo/app/modules/auth/views/reset_password_confirm_view.dart';
+import 'package:pillo/app/modules/auth/views/reset_password_view.dart';
 import 'package:pillo/app/modules/main/home/views/home_view.dart';
+import 'package:pillo/app/modules/main/profile/views/account_info_view.dart';
+import 'package:pillo/app/modules/main/profile/views/help_support_view.dart';
+import 'package:pillo/app/modules/main/profile/views/my_order_view.dart';
+import 'package:pillo/app/modules/main/profile/views/resume_pro_view.dart';
+import 'package:pillo/app/modules/main/profile/views/setting_view.dart';
+import 'package:pillo/app/modules/main/profile/views/term_policy_view.dart';
 import 'package:pillo/app/utils/app_colors.dart';
 import 'package:pillo/app/utils/app_config.dart';
 import 'package:pillo/app/utils/app_extension.dart';
@@ -114,7 +123,28 @@ class ProfileView extends GetView<ProfileController> {
                 itemBuilder: (c, i) {
                   var data = settingsItems[i];
                   return InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      SystemChrome.setSystemUIOverlayStyle(
+                          SystemUiOverlayStyle.light.copyWith(
+                        statusBarIconBrightness: Brightness.dark,
+                      ));
+                      if (i == 0) {
+                        Get.to(() => const AccountInfoView());
+                      } else if (i == 1) {
+                        Get.to(() => const ResumeProView());
+                      } else if (i == 2) {
+                        Get.to(() => const MyOrderView());
+                      } else if (i == 3) {
+                        Get.to(() => const HelpSupportView());
+                      } else if (i == 4) {
+                        Get.to(() => const TermPolicyView());
+                      } else if (i == 5) {
+                        Get.to(() => const SettingView());
+                      } else if (i == 6) {
+                        Get.to(() => const CodeVerifyView(),
+                            arguments: 'reset');
+                      }
+                    },
                     child: Padding(
                       padding: const EdgeInsets.only(
                           left: 23, right: 23, bottom: 12, top: 12),

@@ -38,7 +38,7 @@ class AuthView extends GetView<AuthController> {
                       statusBarIconBrightness: Brightness.light,
                       statusBarColor: primaryColor,
                     ));
-                    Get.toNamed(Routes.MAIN);
+                    Get.offAllNamed(Routes.MAIN);
                   },
                   child: const MyText(
                     text: 'Skip',

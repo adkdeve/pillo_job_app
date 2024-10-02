@@ -302,10 +302,12 @@ class MyBackBtn extends StatelessWidget {
   const MyBackBtn({
     super.key,
     this.onTap,
+    this.icon = ic_arrow_bck,
     this.light = false,
   });
   final VoidCallback? onTap;
   final bool light;
+  final String icon;
 
   @override
   Widget build(BuildContext context) {
@@ -330,7 +332,7 @@ class MyBackBtn extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: SvgPicture.asset(
-            ic_arrow_bck,
+            icon,
 
             color: light ? whiteColor : null,
             // color: light? whiteColor:nul,

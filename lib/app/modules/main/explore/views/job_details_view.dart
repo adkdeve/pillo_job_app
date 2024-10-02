@@ -371,7 +371,208 @@ class JobDetailsView extends GetView<ExploreController> {
           _buildBulletPoint(
               'Stay updated and research on current market trends in design/fashion.'),
           (defaultPadding / 2).sbh,
+          const MyText(
+            text: 'Important Details',
+            fontSize: 18,
+            fontWeight: FontWeight.w600,
+            letterSpacing: 0.1,
+            color: green,
+            textAlign: TextAlign.left,
+          ),
+          10.sbh,
+
+          const Row(
+            children: [
+              MyText(
+                text: 'Job Category : ',
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+                color: blackColor,
+                letterSpacing: 0.1,
+                textAlign: TextAlign.left,
+              ),
+              MyText(
+                text: 'Information Technology',
+                fontSize: 16,
+                fontWeight: FontWeight.w400,
+                color: blackColor,
+                letterSpacing: 0.1,
+                textAlign: TextAlign.left,
+              ),
+            ],
+          ),
+          8.sbh,
+          const Row(
+            children: [
+              MyText(
+                text: 'Years of Experience : ',
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+                color: blackColor,
+                letterSpacing: 0.1,
+                textAlign: TextAlign.left,
+              ),
+              MyText(
+                text: '1-3 Years',
+                fontSize: 16,
+                fontWeight: FontWeight.w400,
+                color: blackColor,
+                letterSpacing: 0.1,
+                textAlign: TextAlign.left,
+              ),
+            ],
+          ),
+          8.sbh,
+          const Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              MyText(
+                text: 'Education Required : ',
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+                color: blackColor,
+                letterSpacing: 0.1,
+                textAlign: TextAlign.left,
+              ),
+              Expanded(
+                child: MyText(
+                  text: 'Associates , Bachelors',
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400,
+                  color: blackColor,
+                  letterSpacing: 0.1,
+                  textAlign: TextAlign.left,
+                ),
+              ),
+            ],
+          ),
+          8.sbh,
+          const Row(
+            children: [
+              MyText(
+                text: 'Skills Required : ',
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+                color: blackColor,
+                letterSpacing: 0.1,
+                textAlign: TextAlign.left,
+              ),
+              MyText(
+                text: 'HTML, Figma, Java',
+                fontSize: 16,
+                fontWeight: FontWeight.w400,
+                color: blackColor,
+                letterSpacing: 0.1,
+                textAlign: TextAlign.left,
+              ),
+            ],
+          ),
+          8.sbh,
+          const Row(
+            children: [
+              MyText(
+                text: 'Job Type : ',
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+                color: blackColor,
+                letterSpacing: 0.1,
+                textAlign: TextAlign.left,
+              ),
+              MyText(
+                text: 'Full-Time',
+                fontSize: 16,
+                fontWeight: FontWeight.w400,
+                color: blackColor,
+                letterSpacing: 0.1,
+                textAlign: TextAlign.left,
+              ),
+            ],
+          ),
+          8.sbh,
+          const Row(
+            children: [
+              MyText(
+                text: 'Work Type : ',
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+                color: blackColor,
+                letterSpacing: 0.1,
+                textAlign: TextAlign.left,
+              ),
+              MyText(
+                text: 'Remote',
+                fontSize: 16,
+                fontWeight: FontWeight.w400,
+                color: blackColor,
+                letterSpacing: 0.1,
+                textAlign: TextAlign.left,
+              ),
+            ],
+          ),
+          8.sbh,
+
+          const Row(
+            children: [
+              MyText(
+                text: 'Salary : ',
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+                color: blackColor,
+                letterSpacing: 0.1,
+                textAlign: TextAlign.left,
+              ),
+              MyText(
+                text: 'none',
+                fontSize: 16,
+                fontWeight: FontWeight.w400,
+                color: blackColor,
+                letterSpacing: 0.1,
+                textAlign: TextAlign.left,
+              ),
+            ],
+          ),
+          16.sbh,
+          const MyText(
+            text: 'Ideal Candidate',
+            fontSize: 18,
+            fontWeight: FontWeight.w600,
+            letterSpacing: 0.1,
+            color: green,
+            textAlign: TextAlign.left,
+          ),
+          10.sbh,
+          const MyText(
+            text:
+                'The Brand Designer job description includes the entire process of brainstorming, visualizing and creating design including typography, layouts, illustration and photography.',
+            fontSize: 16,
+            fontWeight: FontWeight.w400,
+            letterSpacing: 0.1,
+            color: blackColor,
+            height: 1.4,
+            textAlign: TextAlign.left,
+          ),
+          16.sbh,
+          const MyText(
+            text: 'Nice to Haves',
+            fontSize: 18,
+            fontWeight: FontWeight.w600,
+            letterSpacing: 0.1,
+            color: green,
+            textAlign: TextAlign.left,
+          ),
+          10.sbh,
+          const MyText(
+            text:
+                'The Brand Designer job description includes the entire process of brainstorming, visualizing and creating design including typography, layouts, illustration and photography.',
+            fontSize: 16,
+            fontWeight: FontWeight.w400,
+            letterSpacing: 0.1,
+            color: blackColor,
+            height: 1.4,
+            textAlign: TextAlign.left,
+          ),
           // Location Section
+          (defaultPadding).sbh,
 
           const MyText(
             text: 'Location',
@@ -1071,6 +1272,7 @@ class JobDetailsView extends GetView<ExploreController> {
       ),
     );
   }
+
 }
 
 class Textedit2 extends StatelessWidget {
@@ -1079,16 +1281,22 @@ class Textedit2 extends StatelessWidget {
     required this.title,
     this.hintText = '',
     this.hintTextColor = color400,
+    this.titleTextColor = blackColor,
     this.icon = '',
     this.maxLines = 1,
     this.minLines = 1,
+    this.borderRadius = 12.0,
     this.require = false,
+    this.text = '',
   });
   final String title;
   final String hintText;
   final Color hintTextColor;
+  final Color titleTextColor;
   final String icon;
+  final String text;
   final int maxLines;
+  final double borderRadius;
   final int minLines;
   final bool require;
 
@@ -1107,11 +1315,11 @@ class Textedit2 extends StatelessWidget {
                   fontWeight: FontWeight.w600,
                   fontSize: 16,
                   letterSpacing: 0.3,
-                  color: blackColor,
+                  color: titleTextColor,
                 ),
               ),
               TextSpan(
-                text:require? '*':'',
+                text: require ? '*' : '',
                 style: GoogleFonts.inter().copyWith(
                   fontWeight: FontWeight.w600,
                   fontSize: 16,
@@ -1147,21 +1355,22 @@ class Textedit2 extends StatelessWidget {
         15.sbh,
         Container(
           padding: const EdgeInsets.all(2),
-          decoration: const ShapeDecoration(
+          decoration:  ShapeDecoration(
             shape: SmoothRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(12)),
+              borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
               side: BorderSide(color: color200),
             ),
           ),
           child: TextFormField(
+            controller: TextEditingController(text: text),
             cursorColor: primaryColor,
             maxLines: maxLines,
-            readOnly: icon !='',
+            readOnly: icon != '',
             minLines: minLines,
             style: GoogleFonts.inter().copyWith(
               // color: primaryColor,
-              // fontSize: 14,
-              fontWeight: FontWeight.w500,
+              fontSize: 16,
+              fontWeight: FontWeight.w600,
               letterSpacing: 0.3,
             ),
             decoration: InputDecoration(

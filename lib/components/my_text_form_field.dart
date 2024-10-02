@@ -11,7 +11,7 @@ class MyTextFormField extends StatefulWidget {
     super.key,
     required this.hinttxt,
     this.suffixIcon,
-    required this.prefixIcon,
+    this.prefixIcon,
     this.validator,
     required this.controller,
     this.obscureTxt = false,
@@ -21,7 +21,7 @@ class MyTextFormField extends StatefulWidget {
   });
 
   final String hinttxt;
-  final String prefixIcon;
+  final String? prefixIcon;
   final String? suffixIcon;
   final TextInputType keyboardType;
   final bool obscureTxt;
@@ -102,14 +102,16 @@ class _MyTextFormFieldState extends State<MyTextFormField> {
               widget.suffixIcon ?? '',
             ),
           ),
-          prefixIcon: Padding(
-            padding: const EdgeInsets.symmetric(
-                horizontal: defaultPadding, vertical: 14),
-            child: SvgPicture.asset(
-              widget.prefixIcon,
-              color: _isFocused ? primaryColor : color400,
-            ),
-          ),
+          prefixIcon: widget.prefixIcon != null
+              ? Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: defaultPadding, vertical: 14),
+                  child: SvgPicture.asset(
+                    widget.prefixIcon ?? '',
+                    color: _isFocused ? primaryColor : color400,
+                  ),
+                )
+              : null,
           border: InputBorder.none,
         ),
       ),
