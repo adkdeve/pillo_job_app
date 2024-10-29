@@ -37,11 +37,12 @@ class MyTextFormField extends StatefulWidget {
 class _MyTextFormFieldState extends State<MyTextFormField> {
   final FocusNode _focusNode = FocusNode(); // FocusNode to track focus changes
   bool _isFocused = false; // To track if the TextFormField is focused
-  // var _passwordVisible = false;
-
+  var _passwordVisible = false;
   @override
   void initState() {
     super.initState();
+    _passwordVisible = false;
+
     _focusNode.addListener(() {
       setState(() {
         _isFocused = _focusNode.hasFocus;
@@ -70,19 +71,19 @@ class _MyTextFormFieldState extends State<MyTextFormField> {
         onChanged: widget.onChange,
         focusNode: _focusNode,
         readOnly: widget.readOnly,
-        obscureText: widget.obscureTxt,
-        // obscureText: widget.obscureTxt ? !_passwordVisible : false,
+        // obscureText: widget.obscureTxt,
+        obscureText: widget.obscureTxt ? !_passwordVisible : false,
         validator: widget.validator,
         controller: widget.controller,
         keyboardType: widget.keyboardType,
-        cursorColor: primaryColor,
-        maxLines: 1,
-        style: GoogleFonts.inter().copyWith(
-          color: primaryColor,
-          // fontSize: 14,
-          fontWeight: FontWeight.w500,
-          letterSpacing: 0.3,
-        ),
+          cursorColor: primaryColor,
+          maxLines: 1,
+          style: GoogleFonts.inter().copyWith(
+            color: primaryColor,
+            // fontSize: 14,
+            fontWeight: FontWeight.w500,
+            letterSpacing: 0.3,
+          ),
         decoration: InputDecoration(
           isDense: true,
           contentPadding: const EdgeInsets.symmetric(
@@ -96,12 +97,28 @@ class _MyTextFormFieldState extends State<MyTextFormField> {
             fontWeight: FontWeight.w400,
             letterSpacing: 0.3,
           ),
-          suffixIcon: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: defaultPadding),
-            child: SvgPicture.asset(
-              widget.suffixIcon ?? '',
-            ),
-          ),
+          suffixIcon: widget.obscureTxt
+              ? IconButton(
+                  iconSize: 20,
+                  icon: Icon(
+                    _passwordVisible
+                        ? Icons.visibility_outlined
+                        : Icons.visibility_off_outlined,
+                    color: color400,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      _passwordVisible = !_passwordVisible;
+                    });
+                  },
+                )
+              : Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: defaultPadding),
+                  child: SvgPicture.asset(
+                    widget.suffixIcon ?? '',
+                  ),
+                ),
           prefixIcon: widget.prefixIcon != null
               ? Padding(
                   padding: const EdgeInsets.symmetric(

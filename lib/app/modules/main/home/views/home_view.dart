@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pillo/app/modules/main/controllers/main_controller.dart';
 import 'package:pillo/app/modules/main/explore/views/job_details_view.dart';
 import 'package:pillo/app/modules/main/notification/views/notification_view.dart';
 import 'package:pillo/app/routes/app_pages.dart';
@@ -73,13 +74,14 @@ class HomeView extends GetView<HomeController> {
       body: Column(
         children: [
           Expanded(
+            flex: 7,
             child: Container(
               width: 1.sw,
               color: color100,
               child: Stack(
                 children: [
                   Positioned(
-                    bottom: 62,
+                    bottom: 42,
                     child: Image.asset(
                       img_home,
                       width: 1.sw,
@@ -151,23 +153,30 @@ class HomeView extends GetView<HomeController> {
             ),
           ),
           Expanded(
+            flex: 8,
             child: Column(
               children: [
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 21, vertical: 23),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 21, vertical: 10),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      MyText(
+                      const MyText(
                         text: 'Recently Added ️',
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
                       ),
-                      MyText(
-                        text: 'View all ️',
-                        fontSize: 14,
-                        color: red,
-                        fontWeight: FontWeight.w700,
+                      GestureDetector(
+                        onTap: () {
+                          Get.find<MainController>().index.value = 1;
+                        },
+                        child: const MyText(
+                          text: 'View all ️',
+                          fontSize: 14,
+                          color: red,
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
                     ],
                   ),
@@ -218,7 +227,7 @@ class HomeView extends GetView<HomeController> {
                         }),
                   ),
                 ),
-                defaultPadding.sbh,
+                4.sbh,
                 Expanded(
                   child: ListView.builder(
                     padding: const EdgeInsets.all(0),

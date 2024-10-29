@@ -33,7 +33,7 @@ class ChooseIndustryView extends GetView<AuthController> {
       {'label': 'Warehouse & Operations', 'value': false},
       {'label': 'Beauty & Wellness', 'value': false},
     ].obs;
-
+    var isAnyItemSelected = true.obs;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: SafeArea(
@@ -97,6 +97,10 @@ class ChooseIndustryView extends GetView<AuthController> {
                         value: items[index]['value'],
                         onChanged: (bool? newValue) {
                           items[index]['value'] = newValue!;
+
+                          isAnyItemSelected.value =
+                              items.any((item) => item['value'] == true);
+
                           items.refresh();
                         },
                       );
@@ -105,16 +109,19 @@ class ChooseIndustryView extends GetView<AuthController> {
                 ),
               ),
               (defaultPadding * 2).sbh,
-              PrimaryButton(
-                text: 'Continue',
-                onPressed: () {
-                  SystemChrome.setSystemUIOverlayStyle(
-                      SystemUiOverlayStyle.light.copyWith(
-                    statusBarIconBrightness: Brightness.light,
-                    statusBarColor: primaryColor,
-                  ));
-                  Get.toNamed(Routes.MAIN);
-                },
+              Obx(
+                () => PrimaryButton(
+                  text: 'Continue',
+                  disabled: !isAnyItemSelected.value,
+                  onPressed: () {
+                    SystemChrome.setSystemUIOverlayStyle(
+                        SystemUiOverlayStyle.light.copyWith(
+                      statusBarIconBrightness: Brightness.light,
+                      statusBarColor: primaryColor,
+                    ));
+                    Get.toNamed(Routes.MAIN);
+                  },
+                ),
               ),
               (defaultPadding * 2).sbh,
             ],

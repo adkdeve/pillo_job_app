@@ -33,12 +33,13 @@ class AuthView extends GetView<AuthController> {
                 alignment: Alignment.centerRight,
                 child: GestureDetector(
                   onTap: () {
-                    SystemChrome.setSystemUIOverlayStyle(
-                        SystemUiOverlayStyle.light.copyWith(
-                      statusBarIconBrightness: Brightness.light,
-                      statusBarColor: primaryColor,
-                    ));
-                    Get.offAllNamed(Routes.MAIN);
+                    Get.to(() => const SigninView());
+                    // SystemChrome.setSystemUIOverlayStyle(
+                    //     SystemUiOverlayStyle.light.copyWith(
+                    //   statusBarIconBrightness: Brightness.light,
+                    //   statusBarColor: primaryColor,
+                    // ));
+                    // Get.offAllNamed(Routes.MAIN);
                   },
                   child: const MyText(
                     text: 'Skip',

@@ -174,33 +174,33 @@ class AccountInfoView extends GetView<ProfileController> {
                               ),
                             ],
                           ),
-                          27.sbh,
-                          Obx(
-                            () => Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                const MyText(
-                                  text: '2FA Enabled',
-                                  fontSize: 14,
-                                  color: color500,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                                SizedBox(
-                                  height: 20,
-                                  child: Switch(
-                                    value: isSwitched.value,
-                                    onChanged: (value) {
-                                      isSwitched.value = value;
-                                    },
-                                    activeTrackColor: green,
-                                    activeColor: whiteColor,
-                                    inactiveThumbColor: green,
-                                    inactiveTrackColor: whiteColor,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
+                          // 27.sbh,
+                          // Obx(
+                          //   () => Row(
+                          //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          //     children: [
+                          //       const MyText(
+                          //         text: '2FA Enabled',
+                          //         fontSize: 14,
+                          //         color: color500,
+                          //         fontWeight: FontWeight.w600,
+                          //       ),
+                          //       SizedBox(
+                          //         height: 20,
+                          //         child: Switch(
+                          //           value: isSwitched.value,
+                          //           onChanged: (value) {
+                          //             isSwitched.value = value;
+                          //           },
+                          //           activeTrackColor: green,
+                          //           activeColor: whiteColor,
+                          //           inactiveThumbColor: green,
+                          //           inactiveTrackColor: whiteColor,
+                          //         ),
+                          //       ),
+                          //     ],
+                          //   ),
+                          // ),
                         ],
                       ),
                     ),
@@ -254,6 +254,24 @@ class AccountInfoView extends GetView<ProfileController> {
                               ),
                               MyText(
                                 text: 'janedoe@test.com',
+                                fontSize: 14,
+                                color: color900,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ],
+                          ),
+                          27.sbh,
+                          const Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              MyText(
+                                text: 'Country',
+                                fontSize: 14,
+                                color: color500,
+                                fontWeight: FontWeight.w600,
+                              ),
+                              MyText(
+                                text: 'Jamaica',
                                 fontSize: 14,
                                 color: color900,
                                 fontWeight: FontWeight.w600,

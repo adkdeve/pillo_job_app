@@ -55,6 +55,7 @@ class SigninView extends GetView<AuthController> {
                   hinttxt: 'Email',
                   controller: controller.emailController,
                   prefixIcon: ic_mail,
+                  keyboardType: TextInputType.emailAddress,
                 ),
                 (defaultPadding).sbh,
                 MyTextFormField(
@@ -112,7 +113,7 @@ class SigninView extends GetView<AuthController> {
                 Obx(
                   () => PrimaryButton(
                     smoothness: 0,
-                    disabled: controller.isButtonEnabled.value,
+                    disabled: !controller.isButtonEnabled.value,
                     text: 'Sign In',
                     onPressed: () {
                       Get.to(() => const CodeVerifyView(), arguments: 'signin');

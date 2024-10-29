@@ -13,6 +13,9 @@ import 'package:pillo/app/modules/main/explore/views/filter_view.dart';
 import 'package:pillo/app/modules/main/explore/views/job_details_view.dart';
 import 'package:pillo/app/modules/main/explore/views/review_submit_view.dart';
 import 'package:pillo/app/modules/main/home/views/home_view.dart';
+import 'package:pillo/app/modules/main/profile/views/help_support_view.dart';
+import 'package:pillo/app/modules/main/profile/views/privacy_policy_view.dart';
+import 'package:pillo/app/modules/main/profile/views/term_of_use_view.dart';
 import 'package:pillo/app/utils/app_colors.dart';
 import 'package:pillo/app/utils/app_config.dart';
 import 'package:pillo/app/utils/app_extension.dart';
@@ -70,7 +73,12 @@ class ApplyJobView extends GetView<ExploreController> {
                               letterSpacing: 0.1,
                             ),
                           ),
-                          SvgPicture.asset(ic_dot_more_hor),
+                          GestureDetector(
+                            onTap: () {
+                              Get.to(() => const HelpSupportView());
+                            },
+                            child: SvgPicture.asset(ic_dot_more_hor),
+                          ),
                         ],
                       ),
                       const Spacer(),
@@ -229,26 +237,34 @@ class ApplyJobView extends GetView<ExploreController> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Textedit2(
-                      title: 'Full Name',
+                      title: 'Full Name ',
                       require: true,
                     ),
                     20.sbh,
                     const Textedit2(
-                      title: 'Phone Number',
+                      title: 'Phone Number ',
                       require: true,
                     ),
                     20.sbh,
                     const Textedit2(
-                      title: 'Email Address',
+                      title: 'Email Address ',
                       require: true,
                     ),
                     20.sbh,
                     const Textedit2(
-                      title: 'Website, blog, or portfolio (if any)',
+                      title: 'Street Address',
                     ),
                     20.sbh,
                     const Textedit2(
-                      title: 'Salary Expectation (Monthly or Hourly)',
+                      title: 'City',
+                    ),
+                    20.sbh,
+                    const Textedit2(
+                      title: 'State, Province or Parish',
+                    ),
+                    20.sbh,
+                    const Textedit2(
+                      title: 'Country',
                     ),
                     20.sbh,
                     Text.rich(
@@ -287,7 +303,7 @@ class ApplyJobView extends GetView<ExploreController> {
                     ),
                     20.sbh,
                     const Textedit2(
-                      title: 'What is your Gender?',
+                      title: 'What is your Gender? ',
                       require: true,
                       hintTextColor: blackColor,
                       hintText: 'Choose One',
@@ -310,7 +326,7 @@ class ApplyJobView extends GetView<ExploreController> {
                     ),
                     20.sbh,
                     const Textedit2(
-                      title: 'Please choose one of the options below:',
+                      title: 'Please choose one of the options below: ',
                       require: true,
                       hintTextColor: blackColor,
                       hintText: 'Choose One',
@@ -318,16 +334,7 @@ class ApplyJobView extends GetView<ExploreController> {
                     ),
                     20.sbh,
                     const Textedit2(
-                      title: 'What is your ethnicity?',
-                      require: true,
-                      hintTextColor: blackColor,
-                      hintText: 'Choose One',
-                      icon: ic_arrow_down,
-                    ),
-                    20.sbh,
-                    const Textedit2(
-                      title:
-                          'Please choose the ethnicity which most accurately describe how you identify',
+                      title: 'Are you a Veteran? ',
                       require: true,
                       hintTextColor: blackColor,
                       hintText: 'Choose One',
@@ -336,7 +343,16 @@ class ApplyJobView extends GetView<ExploreController> {
                     20.sbh,
                     const Textedit2(
                       title:
-                          'Are you legally authorized to work for any employer in the Jamaica without any restrictions?',
+                          'Please choose the ethnicity which most accurately describe how you identify ',
+                      require: true,
+                      hintTextColor: blackColor,
+                      hintText: 'Choose One',
+                      icon: ic_arrow_down,
+                    ),
+                    20.sbh,
+                    const Textedit2(
+                      title:
+                          'Are you legally authorized to work for any employer in the Jamaica without any restrictions? ',
                       require: true,
                       hintTextColor: blackColor,
                       hintText: 'Choose One',
@@ -373,39 +389,68 @@ class ApplyJobView extends GetView<ExploreController> {
                               children: [
                                 TextSpan(
                                   text:
-                                      'My data can be used for recruitment process by',
+                                      'My data can be used for recruitment process by Pillo and their partners. ',
                                   style: GoogleFonts.inter().copyWith(
                                     fontWeight: FontWeight.w600,
-                                    fontSize: 16,
+                                    fontSize: 14,
                                     letterSpacing: 0.3,
                                     color: blackColor,
                                   ),
                                 ),
-                                TextSpan(
-                                  text: ' Pillo ',
-                                  style: GoogleFonts.inter().copyWith(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 16,
-                                    letterSpacing: 0.3,
-                                    color: red,
-                                  ),
-                                ),
-                                TextSpan(
-                                  text: 'or their subsidiaries.',
-                                  style: GoogleFonts.inter().copyWith(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 16,
-                                    letterSpacing: 0.3,
-                                    color: blackColor,
-                                  ),
-                                ),
+                                // TextSpan(
+                                //   text: ' Pillo ',
+                                //   style: GoogleFonts.inter().copyWith(
+                                //     fontWeight: FontWeight.w600,
+                                //     fontSize: 16,
+                                //     letterSpacing: 0.3,
+                                //     color: red,
+                                //   ),
+                                // ),
+                                // TextSpan(
+                                //   text: 'or their subsidiaries.',
+                                //   style: GoogleFonts.inter().copyWith(
+                                //     fontWeight: FontWeight.w600,
+                                //     fontSize: 16,
+                                //     letterSpacing: 0.3,
+                                //     color: blackColor,
+                                //   ),
+                                // ),
                               ],
                             ),
                           ),
                         ),
                       ],
                     ),
-                    42.sbh,
+                    35.sbh,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            Get.to(() => const PrivacyPolicyView());
+                          },
+                          child: const MyText(
+                            text: 'Privacy Policy',
+                            fontSize: 14,
+                            color: red,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        24.sbw,
+                        GestureDetector(
+                          onTap: () {
+                            Get.to(() => const TermOfUseView());
+                          },
+                          child: const MyText(
+                            text: 'Terms of Use',
+                            fontSize: 14,
+                            color: red,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                      ],
+                    ),
+                    35.sbh,
                     Center(
                       child: SizedBox(
                         width: .8.sw,

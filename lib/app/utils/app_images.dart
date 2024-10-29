@@ -53,6 +53,8 @@ const img_submit_job = "assets/images/submit_job.png";
 const ic_star = "assets/icons/ic_star.svg";
 const ic_upload_cv = "assets/icons/ic_upload_cv.svg";
 
+const ic_web = "assets/icons/ic_web.svg";
+
 // $$$$$$$$$$$$$$$   job   $$$$$$$$$$$$$$$
 const ic_no_job = "assets/icons/ic_no_job.svg";
 

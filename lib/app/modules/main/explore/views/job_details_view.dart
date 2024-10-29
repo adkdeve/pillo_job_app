@@ -14,6 +14,7 @@ import 'package:pillo/app/modules/main/explore/views/company_details_view.dart';
 import 'package:pillo/app/modules/main/explore/views/filter_view.dart';
 import 'package:pillo/app/modules/main/explore/views/review_submit_view.dart';
 import 'package:pillo/app/modules/main/home/views/home_view.dart';
+import 'package:pillo/app/modules/main/profile/views/help_support_view.dart';
 import 'package:pillo/app/utils/app_colors.dart';
 import 'package:pillo/app/utils/app_config.dart';
 import 'package:pillo/app/utils/app_extension.dart';
@@ -29,6 +30,7 @@ class JobDetailsView extends GetView<ExploreController> {
   @override
   Widget build(BuildContext context) {
     var controller = Get.put(ExploreController());
+    var fav = false.obs;
     // var controller = Get.put(dExploreController());
     return Scaffold(
       body: Stack(
@@ -75,30 +77,40 @@ class JobDetailsView extends GetView<ExploreController> {
                                     letterSpacing: 0.1,
                                   ),
                                 ),
-                                SvgPicture.asset(ic_dot_more_hor),
+                                GestureDetector(
+                                  onTap: () {
+                                    Get.to(() => const HelpSupportView());
+                                  },
+                                  child: SvgPicture.asset(ic_dot_more_hor),
+                                ),
                               ],
                             ),
                             const Spacer(),
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Container(
-                                  height: 70,
-                                  width: 70,
-                                  decoration: ShapeDecoration(
-                                    color: color100,
-                                    shape: SmoothRectangleBorder(
-                                      smoothness: .5,
-                                      borderRadius: BorderRadius.circular(
-                                        defaultPadding,
+                                GestureDetector(
+                                  onTap: () {
+                                    Get.to(() => const CompanyDetailsView());
+                                  },
+                                  child: Container(
+                                    height: 70,
+                                    width: 70,
+                                    decoration: ShapeDecoration(
+                                      color: color100,
+                                      shape: SmoothRectangleBorder(
+                                        smoothness: .5,
+                                        borderRadius: BorderRadius.circular(
+                                          defaultPadding,
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  child: Center(
-                                    child: SvgPicture.asset(
-                                      ic_blockchain,
-                                      width: 48,
-                                      height: 48,
+                                    child: Center(
+                                      child: SvgPicture.asset(
+                                        ic_blockchain,
+                                        width: 48,
+                                        height: 48,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -253,7 +265,7 @@ class JobDetailsView extends GetView<ExploreController> {
                     tabs: const [
                       Tab(text: 'Jobs Description'),
                       Tab(text: 'Company'),
-                      Tab(text: 'Review'),
+                      // Tab(text: 'Review'),
                     ],
                   ),
                 ),
@@ -266,7 +278,7 @@ class JobDetailsView extends GetView<ExploreController> {
                       // 2nd Tab: Company Information
                       secondTab(),
                       // 3rd Tab: Reviews Section
-                      thiredTab(),
+                      // thiredTab(),
                     ],
                   ),
                 ),
@@ -280,48 +292,61 @@ class JobDetailsView extends GetView<ExploreController> {
               left: 0,
               right: 0,
               child: Obx(
-                () => Visibility(
-                  visible: controller.selectedIndex != 2,
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 32, vertical: 16),
-                    width: 1.sw,
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [
-                          Colors.white.withOpacity(0.5),
-                          Colors.white.withOpacity(0.89),
-                          Colors.white,
-                        ],
-                        stops: const [
-                          0.0,
-                          0.9998,
-                          1.0,
-                        ],
+                () => Container(
+                  padding: const EdgeInsets.only(
+                    top: 16, bottom: 16, left: 32, right: 16,
+                    // horizontal: 32,
+                    // vertical: 16,
+                  ),
+                  width: 1.sw,
+                  decoration: const BoxDecoration(
+                      // gradient: LinearGradient(
+                      //   begin: Alignment.topCenter,
+                      //   end: Alignment.bottomCenter,
+                      //   colors: [
+                      //     Colors.white.withOpacity(0.5),
+                      //     Colors.white.withOpacity(0.89),
+                      //     Colors.white,
+                      //   ],
+                      //   stops: const [
+                      //     0.0,
+                      //     0.9998,
+                      //     1.0,
+                      //   ],
+                      // ),
                       ),
-                    ),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: PrimaryButton(
-                            text: controller.selectedIndex == 1
-                                ? 'See All 12 Jobs'
-                                : 'Apply Now',
-                            onPressed: () {
-                              if (controller.selectedIndex == 1) {
-                                Get.to(() => const CompanyDetailsView());
-                              } else {
-                                Get.to(() => const ApplyJobView());
-                              }
-                            },
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: PrimaryButton(
+                          text: controller.selectedIndex == 1
+                              ? 'See All 12 Jobs'
+                              : 'Apply Now',
+                          onPressed: () {
+                            if (controller.selectedIndex == 1) {
+                              Get.to(() => const CompanyDetailsView());
+                            } else {
+                              Get.to(() => const ApplyJobView());
+                            }
+                          },
+                        ),
+                      ),
+                      8.sbw,
+                      // SvgPicture.asset(ic_fav),
+                      IconButton(
+                        onPressed: () {
+                          fav.value = !fav.value;
+                        },
+                        icon: Obx(
+                          () => SvgPicture.asset(
+                            fav.value ? ic_heart : ic_heart_un,
+                            color: red,
+                            width: 22,
+                            height: 22,
                           ),
                         ),
-                        14.sbw,
-                        SvgPicture.asset(ic_fav),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
               ),
@@ -1272,7 +1297,6 @@ class JobDetailsView extends GetView<ExploreController> {
       ),
     );
   }
-
 }
 
 class Textedit2 extends StatelessWidget {
@@ -1313,7 +1337,7 @@ class Textedit2 extends StatelessWidget {
                 text: title,
                 style: GoogleFonts.inter().copyWith(
                   fontWeight: FontWeight.w600,
-                  fontSize: 16,
+                  fontSize: 14,
                   letterSpacing: 0.3,
                   color: titleTextColor,
                 ),
@@ -1322,7 +1346,7 @@ class Textedit2 extends StatelessWidget {
                 text: require ? '*' : '',
                 style: GoogleFonts.inter().copyWith(
                   fontWeight: FontWeight.w600,
-                  fontSize: 16,
+                  fontSize: 14,
                   letterSpacing: 0.3,
                   color: red,
                 ),
@@ -1355,10 +1379,10 @@ class Textedit2 extends StatelessWidget {
         15.sbh,
         Container(
           padding: const EdgeInsets.all(2),
-          decoration:  ShapeDecoration(
+          decoration: ShapeDecoration(
             shape: SmoothRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
-              side: BorderSide(color: color200),
+              side: const BorderSide(color: color200),
             ),
           ),
           child: TextFormField(

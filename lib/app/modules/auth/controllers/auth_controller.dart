@@ -4,27 +4,30 @@ import 'package:get/get.dart';
 class AuthController extends GetxController {
   var emailController = TextEditingController();
   var passController = TextEditingController();
-  var isButtonEnabled = true.obs;
+  var isButtonEnabled = false.obs;
   @override
   void onInit() {
     super.onInit();
 
-    // emailController.addListener(_updateButtonState);
+    emailController.addListener(_updateButtonState);
     passController.addListener(_updateButtonState);
   }
 
   void _updateButtonState() {
-    isButtonEnabled.value =
-        (passController.text.isEmpty && emailController.text.isEmpty)
-            ? true
-            : false;
+    if (passController.text != '' &&
+        emailController.text != '' &&
+        emailController.text.isEmail) {
+      isButtonEnabled.value = true;
+    } else {
+      isButtonEnabled.value = false;
+    }
   }
 
   @override
   void dispose() {
     emailController.dispose();
     passController.dispose();
-    isButtonEnabled.value = true;
+    isButtonEnabled.value = false;
     super.dispose();
   }
 }

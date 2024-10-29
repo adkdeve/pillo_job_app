@@ -12,6 +12,7 @@ import 'package:pillo/app/modules/main/explore/views/filter_view.dart';
 import 'package:pillo/app/modules/main/explore/views/job_details_view.dart';
 import 'package:pillo/app/modules/main/explore/views/review_submit_view.dart';
 import 'package:pillo/app/modules/main/home/views/home_view.dart';
+import 'package:pillo/app/modules/main/profile/views/help_support_view.dart';
 import 'package:pillo/app/utils/app_colors.dart';
 import 'package:pillo/app/utils/app_config.dart';
 import 'package:pillo/app/utils/app_extension.dart';
@@ -27,7 +28,7 @@ class CompanyDetailsView extends GetView<ExploreController> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 4,
+      length: 2,
       child: Scaffold(
         body: Column(
           children: [
@@ -70,7 +71,12 @@ class CompanyDetailsView extends GetView<ExploreController> {
                                 letterSpacing: 0.1,
                               ),
                             ),
-                            SvgPicture.asset(ic_dot_more_hor),
+                            GestureDetector(
+                              onTap: () {
+                                Get.to(() => const HelpSupportView());
+                              },
+                              child: SvgPicture.asset(ic_dot_more_hor),
+                            ),
                           ],
                         ),
                         const Spacer(),
@@ -228,19 +234,19 @@ class CompanyDetailsView extends GetView<ExploreController> {
                 indicatorWeight: 2, // Thickness of the underline
                 tabs: [
                   Tab(text: 'Home'),
-                  Tab(text: 'About'),
+                  // Tab(text: 'About'),
                   Tab(text: 'Job Listing'),
-                  Tab(text: 'Review'),
+                  // Tab(text: 'Review'),
                 ],
               ),
             ),
             Expanded(
               child: TabBarView(
                 children: [
-                  firstTab(),
+                  // firstTab(),
                   secondTab(),
                   thiredTab(),
-                  fourthTab(),
+                  // fourthTab(),
                 ],
               ),
             ),
@@ -704,6 +710,55 @@ class CompanyDetailsView extends GetView<ExploreController> {
                                 textAlign: TextAlign.left,
                                 color: blackColor,
                                 fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                16.sbh,
+                IntrinsicHeight(
+                  child: Row(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(11),
+                        width: 48,
+                        height: 48,
+                        decoration: const BoxDecoration(
+                          color: green,
+                          shape: BoxShape.circle,
+                        ),
+                        child: Center(
+                          child: SvgPicture.asset(
+                            ic_web,
+                            width: 20,
+                            height: 20,
+                            color: whiteColor,
+                          ),
+                        ),
+                      ),
+                      12.sbw,
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const MyText(
+                              text: 'Website',
+                              fontSize: 12,
+                              textAlign: TextAlign.left,
+                              color: green,
+                              fontWeight: FontWeight.w400,
+                            ),
+                            3.sbh,
+                            const Expanded(
+                              child: MyText(
+                                text: 'https://www.crypto.com',
+                                fontSize: 14,
+                                textAlign: TextAlign.left,
+                                color: red,
+                                fontWeight: FontWeight.w700,
                               ),
                             ),
                           ],

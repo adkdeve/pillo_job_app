@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -22,6 +23,7 @@ class FilterView extends GetView<ExploreController> {
 
   @override
   Widget build(BuildContext context) {
+    var locContoller = TextEditingController(text: 'St.Catherine, Jamaica');
     return Scaffold(
       backgroundColor: color100,
       appBar: AppBar(
@@ -40,151 +42,180 @@ class FilterView extends GetView<ExploreController> {
           letterSpacing: 0.1,
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(
-            horizontal: defaultPadding * 2, vertical: defaultPadding * 1.5),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const MyText(
-              text: 'Category',
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
-            ),
-            defaultPadding.sbh,
-            Container(
-              width: 1.sw,
-              height: 52,
-              padding: const EdgeInsets.symmetric(horizontal: defaultPadding),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),
-                border: Border.all(color: color200),
-              ),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  SvgPicture.asset(
-                    ic_job,
-                    color: green,
-                  ),
-                  12.sbw,
-                  const Expanded(
-                    child: MyText(
-                      text: 'Sales & Marketing',
-                      fontSize: 14,
-                      textAlign: TextAlign.left,
+      body: LayoutBuilder(builder: (context, constraints) {
+        return SingleChildScrollView(
+          child: ConstrainedBox(
+            constraints: BoxConstraints(
+                minWidth: constraints.maxWidth,
+                minHeight: constraints.maxHeight),
+            child: IntrinsicHeight(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: defaultPadding * 2,
+                    vertical: defaultPadding * 1.5),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const MyText(
+                      text: 'Category',
+                      fontSize: 16,
                       fontWeight: FontWeight.w600,
                     ),
-                  ),
-                  SvgPicture.asset(
-                    ic_arrow_down,
-                    color: color500,
-                    width: 16,
-                    height: 16,
-                  ),
-                ],
-              ),
-            ),
-            defaultPadding.sbh,
-            const MyText(
-              text: 'Location',
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
-            ),
-            defaultPadding.sbh,
-            Container(
-              width: 1.sw,
-              height: 52,
-              padding: const EdgeInsets.symmetric(horizontal: defaultPadding),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),
-                border: Border.all(color: color200),
-              ),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  SvgPicture.asset(
-                    ic_location,
-                    color: green,
-                  ),
-                  12.sbw,
-                  const Expanded(
-                    child: MyText(
-                      text: 'St.Catherine, Jamaica',
-                      fontSize: 14,
-                      textAlign: TextAlign.left,
+                    defaultPadding.sbh,
+                    const DropdownWidget(),
+                    // Container(
+                    //   width: 1.sw,
+                    //   height: 52,
+                    //   padding: const EdgeInsets.symmetric(horizontal: defaultPadding),
+                    //   decoration: BoxDecoration(
+                    //     borderRadius: BorderRadius.circular(16),
+                    //     border: Border.all(color: color200),
+                    //   ),
+                    //   child: Row(
+                    //     crossAxisAlignment: CrossAxisAlignment.center,
+                    //     children: [
+                    //       SvgPicture.asset(
+                    //         ic_job,
+                    //         color: green,
+                    //       ),
+                    //       12.sbw,
+                    //       const Expanded(
+                    //         child: MyText(
+                    //           text: 'Sales & Marketing',
+                    //           fontSize: 14,
+                    //           textAlign: TextAlign.left,
+                    //           fontWeight: FontWeight.w600,
+                    //         ),
+                    //       ),
+                    //       SvgPicture.asset(
+                    //         ic_arrow_down,
+                    //         color: color500,
+                    //         width: 16,
+                    //         height: 16,
+                    //       ),
+                    //     ],
+                    //   ),
+                    // ),
+
+                    defaultPadding.sbh,
+                    const MyText(
+                      text: 'Location',
+                      fontSize: 16,
                       fontWeight: FontWeight.w600,
                     ),
-                  ),
-                ],
+                    defaultPadding.sbh,
+                    Container(
+                      width: 1.sw,
+                      height: 52,
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: defaultPadding),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(16),
+                        border: Border.all(color: color200),
+                      ),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          SvgPicture.asset(
+                            ic_location,
+                            color: green,
+                          ),
+                          12.sbw,
+                          Expanded(
+                            child: TextField(
+                                controller: locContoller,
+                                cursorColor: primaryColor,
+                                maxLines: 1,
+                                style: GoogleFonts.inter().copyWith(
+                                  color: primaryColor,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                  letterSpacing: 0.3,
+                                ),
+                                decoration: const InputDecoration(
+                                  isDense: true,
+                                  contentPadding: EdgeInsets.all(0),
+                                  border: InputBorder.none,
+                                )
+                                // text: 'St.Catherine, Jamaica',
+                                // fontSize: 14,
+                                // textAlign: TextAlign.left,
+                                // fontWeight: FontWeight.w600,
+                                ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    (defaultPadding * 2).sbh,
+                    const Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        MyText(
+                          text: 'Min. Salary',
+                          fontSize: 14,
+                          color: color600,
+                          fontWeight: FontWeight.w500,
+                        ),
+                        MyText(
+                          text: 'Max. Salary',
+                          fontSize: 14,
+                          color: color600,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ],
+                    ),
+                    const MyRangeSlider(),
+                    (defaultPadding).sbh,
+                    const MyText(
+                      text: 'Job Type',
+                      fontSize: 16,
+                      textAlign: TextAlign.left,
+                      fontWeight: FontWeight.w700,
+                    ),
+                    (defaultPadding).sbh,
+                    const Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              JobTypeCheckBox(text: 'Full Time'),
+                              JobTypeCheckBox(text: 'Part Time'),
+                              JobTypeCheckBox(text: 'Freelance'),
+                            ],
+                          ),
+                        ),
+                        Expanded(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              JobTypeCheckBox(text: 'Remote'),
+                              JobTypeCheckBox(text: 'Contract'),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                    const Spacer(),
+                    PrimaryButton(
+                      text: 'Apply Filter',
+                      onPressed: () {
+                        Get.back(result: true);
+                      },
+                    ),
+                    const Spacer(),
+                    defaultPadding.sbh,
+                  ],
+                ),
               ),
             ),
-            (defaultPadding * 2).sbh,
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                MyText(
-                  text: 'Min. Salary',
-                  fontSize: 14,
-                  color: color600,
-                  fontWeight: FontWeight.w500,
-                ),
-                MyText(
-                  text: 'Max. Salary',
-                  fontSize: 14,
-                  color: color600,
-                  fontWeight: FontWeight.w500,
-                ),
-              ],
-            ),
-            const MyRangeSlider(),
-            (defaultPadding).sbh,
-            const MyText(
-              text: 'Job Type',
-              fontSize: 16,
-              textAlign: TextAlign.left,
-              fontWeight: FontWeight.w700,
-            ),
-            (defaultPadding).sbh,
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      JobTypeCheckBox(text: 'Full Time'),
-                      JobTypeCheckBox(text: 'Part Time'),
-                      JobTypeCheckBox(text: 'Freelance'),
-                    ],
-                  ),
-                ),
-                Expanded(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      JobTypeCheckBox(text: 'Remote'),
-                      JobTypeCheckBox(text: 'Contract'),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            const Spacer(),
-            PrimaryButton(
-              text: 'Apply Filter',
-              onPressed: () {
-                Get.back(result: true);
-              },
-            ),
-            const Spacer(),
-            defaultPadding.sbh,
-          ],
-        ),
-      ),
+          ),
+        );
+      }),
     );
   }
 }
@@ -267,6 +298,119 @@ class _RangeSliderExampleState extends State<MyRangeSlider> {
           _currentRangeValues = values;
         });
       },
+    );
+  }
+}
+
+class DropdownWidget extends StatefulWidget {
+  const DropdownWidget({super.key});
+
+  @override
+  _DropdownWidgetState createState() => _DropdownWidgetState();
+}
+
+class _DropdownWidgetState extends State<DropdownWidget> {
+  bool isDropdownOpen = false; // Track dropdown state
+  String selectedLabel = 'Sales & Marketing'; // Default selected item
+
+  final RxList<Map<String, dynamic>> items = [
+    {'label': 'Creative & Design', 'value': true},
+    {'label': 'Computer & Technology', 'value': false},
+    {'label': 'Sales & Marketing', 'value': false},
+    {'label': 'Compliance & Finance', 'value': false},
+    {'label': 'Health Care', 'value': false},
+    {'label': 'Tourism & Hospitality', 'value': false},
+    {'label': 'Education', 'value': false},
+    {'label': 'Transportation', 'value': false},
+    {'label': 'Support & Management', 'value': false},
+    {'label': 'Human Resources', 'value': false},
+    {'label': 'Government', 'value': false},
+    {'label': 'Legal', 'value': false},
+    {'label': 'Warehouse & Operations', 'value': false},
+    {'label': 'Beauty & Wellness', 'value': false},
+  ].obs;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        GestureDetector(
+          onTap: () {
+            setState(() {
+              isDropdownOpen = !isDropdownOpen;
+            });
+          },
+          child: Container(
+            width: 1.sw,
+            height: 52,
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(16),
+              border: Border.all(color: color200),
+            ),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SvgPicture.asset(
+                  ic_job,
+                  color: green,
+                ),
+                12.sbw,
+                Expanded(
+                  child: Text(
+                    selectedLabel,
+                    style: const TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+                SvgPicture.asset(
+                  ic_arrow_down,
+                  color: color500,
+                  width: 16,
+                  height: 16,
+                ),
+              ],
+            ),
+          ),
+        ),
+        if (isDropdownOpen)
+          Container(
+            width: 1.sw,
+            margin: const EdgeInsets.only(top: 8),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(16),
+              color: Colors.white,
+              border: Border.all(color: color200),
+            ),
+            child: Obx(() => Column(
+                  children: items
+                      .map((item) => ListTile(
+                            // title: Text(item['label']),
+                            title: MyText(
+                              text: item['label'],
+                              fontSize: 14,
+                              color: item['label'] == selectedLabel
+                                  ? selectedStar
+                                  : null,
+                              fontWeight: item['label'] == selectedLabel
+                                  ? FontWeight.w900
+                                  : null,
+                              textAlign: TextAlign.left,
+                            ),
+                            onTap: () {
+                              setState(() {
+                                selectedLabel = item['label'];
+                                isDropdownOpen = false;
+                              });
+                            },
+                          ))
+                      .toList(),
+                )),
+          ),
+      ],
     );
   }
 }
