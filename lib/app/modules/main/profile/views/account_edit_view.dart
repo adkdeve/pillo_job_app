@@ -1,3 +1,4 @@
+import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
@@ -6,6 +7,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
 import 'package:get/get_core/get_core.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:pillo/app/modules/auth/views/signup_view.dart';
 import 'package:pillo/app/modules/main/explore/views/job_details_view.dart';
 import 'package:pillo/app/modules/main/home/views/home_view.dart';
@@ -24,6 +26,7 @@ class AccountEditView extends GetView<ProfileController> {
   @override
   Widget build(BuildContext context) {
     var isSwitched = true.obs;
+    var countryname = "Jamaica".obs;
     return Scaffold(
       // backgroundColor: color25,
       body: SafeArea(
@@ -92,11 +95,84 @@ class AccountEditView extends GetView<ProfileController> {
                       text: 'janedoe@test.com',
                     ),
                     24.sbh,
-                    const Textedit2(
-                      title: 'Country',
-                      titleTextColor: color500,
-                      text: 'Jamaica',
+                    Text.rich(
+                      maxLines: 3,
+                      TextSpan(
+                        children: [
+                          TextSpan(
+                            text: 'Country',
+                            style: GoogleFonts.inter().copyWith(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 14,
+                              letterSpacing: 0.3,
+                              color: color500,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
+                    15.sbh,
+                    Container(
+                      width: 1.sw,
+                      decoration: const ShapeDecoration(
+                        shape: SmoothRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(12)),
+                          side: BorderSide(color: color200),
+                        ),
+                      ),
+                      child: InkWell(
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(12)),
+                        onTap: () {
+                          showCountryPicker(
+                            context: context,
+                            showPhoneCode: false,
+                            showSearch: false,
+                            countryListTheme: const CountryListThemeData(
+                              flagSize: 25,
+                              backgroundColor: Colors.white,
+                              textStyle:
+                                  TextStyle(fontSize: 16, color: blackColor),
+                              bottomSheetHeight: 500,
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(20.0),
+                                topRight: Radius.circular(20.0),
+                              ),
+                            ),
+                            onSelect: (Country country) {
+                              countryname.value = country.name;
+                              print('Select country: ${country.name}');
+                            },
+                          );
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.all(defaultPadding),
+                          child: Row(
+                            children: [
+                              // SvgPicture.asset(ic_location),
+                              // (defaultPadding / 1.5).sbw,
+                              Obx(
+                                () => MyText(
+                                  text: countryname.value.isEmpty
+                                      ? ''
+                                      : countryname.value,
+                                  color: primaryColor,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w600,
+                                  letterSpacing: 0.3,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    // const Textedit2(
+                    //   title: 'Country',
+                    //   titleTextColor: color500,
+                    //   text: 'Jamaica',
+                    // ),
                     42.sbh,
                     PrimaryButton(text: 'Save', onPressed: () {}),
                     20.sbh,

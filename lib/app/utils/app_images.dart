@@ -69,10 +69,13 @@ const ic_no_save = "assets/icons/ic_no_save.svg";
 // $$$$$$$$$$$$$$$   profile   $$$$$$$$$$$$$$$
 const ic_pattern = "assets/icons/ic_pattern.svg";
 
+const ic_alert = "assets/icons/ic_alert.svg";
+
 const ic_account = "assets/icons/ic_account.svg";
 const ic_resume = "assets/icons/ic_resume.svg";
 const ic_orderr = "assets/icons/ic_order.svg";
 const ic_term = "assets/icons/ic_term.svg";
+const ic_notification2 = "assets/icons/ic_notification2.svg";
 const ic_help = "assets/icons/ic_help.svg";
 const ic_pass = "assets/icons/ic_pass.svg";
 const ic_setting = "assets/icons/ic_setting.svg";

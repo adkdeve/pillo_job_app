@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pillo/app/modules/auth/views/signup_view.dart';
 import 'package:pillo/app/modules/main/home/views/home_view.dart';
+import 'package:pillo/app/modules/main/profile/views/my_alert_view.dart';
 import 'package:pillo/app/utils/app_colors.dart';
 import 'package:pillo/app/utils/app_config.dart';
 import 'package:pillo/app/utils/app_extension.dart';
@@ -35,7 +36,7 @@ class FilterView extends GetView<ExploreController> {
         ),
         centerTitle: true,
         title: const MyText(
-          text: 'Set Filters',
+          text: 'Filter & Create Alerts',
           fontSize: 22,
           color: primaryColor,
           fontWeight: FontWeight.w700,
@@ -201,11 +202,27 @@ class FilterView extends GetView<ExploreController> {
                       ],
                     ),
                     const Spacer(),
+                    36.sbh,
                     PrimaryButton(
                       text: 'Apply Filter',
                       onPressed: () {
                         Get.back(result: true);
                       },
+                    ),
+                    // 8.sbh,
+                    Center(
+                      child: GestureDetector(
+                        onTap: () => Get.to(() => const MyAlertView()),
+                        child: const Padding(
+                          padding: EdgeInsets.all(12),
+                          child: MyText(
+                            text: 'Create Alerts',
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700,
+                            color: green,
+                          ),
+                        ),
+                      ),
                     ),
                     const Spacer(),
                     defaultPadding.sbh,

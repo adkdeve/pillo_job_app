@@ -1,6 +1,5 @@
 // ignore_for_file: library_private_types_in_public_api
 
-
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -19,6 +18,16 @@ class ResetPasswordView extends GetView<AuthController> {
   const ResetPasswordView({super.key});
   @override
   Widget build(BuildContext context) {
+    var emailController = TextEditingController();
+    var isButtonEnabled = false.obs;
+
+    emailController.addListener(() {
+      if (emailController.text != '' && emailController.text.isEmail) {
+        isButtonEnabled.value = true;
+      } else {
+        isButtonEnabled.value = false;
+      }
+    });
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: SafeArea(
@@ -61,15 +70,18 @@ class ResetPasswordView extends GetView<AuthController> {
               (defaultPadding * 1.5).sbh,
               MyTextFormField(
                 hinttxt: 'Email',
-                controller: TextEditingController(),
+                controller: emailController,
                 prefixIcon: ic_mail,
               ),
               const Spacer(),
-              PrimaryButton(
-                text: 'Send code',
-                onPressed: () {
-                  Get.to(() => const CodeVerifyView(), arguments: 'reset');
-                },
+              Obx(
+                () => PrimaryButton(
+                  text: 'Send code',
+                  disabled: !isButtonEnabled.value,
+                  onPressed: () {
+                    Get.to(() => const CodeVerifyView(), arguments: 'reset');
+                  },
+                ),
               ),
               (defaultPadding * 1.5).sbh,
               Row(

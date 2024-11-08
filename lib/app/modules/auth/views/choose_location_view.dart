@@ -62,26 +62,26 @@ class ChooseLocationView extends GetView<AuthController> {
                 child: InkWell(
                   borderRadius: const BorderRadius.all(Radius.circular(12)),
                   onTap: () {
-                    showCountryPicker(
-                      context: context,
-                      showPhoneCode: false,
-                      showSearch: false,
-                      countryListTheme: const CountryListThemeData(
-                        flagSize: 25,
-                        backgroundColor: Colors.white,
-                        textStyle: TextStyle(fontSize: 16, color: blackColor),
-                        bottomSheetHeight: 500,
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(20.0),
-                          topRight: Radius.circular(20.0),
+                      showCountryPicker(
+                        context: context,
+                        showPhoneCode: false,
+                        showSearch: false,
+                        countryListTheme: const CountryListThemeData(
+                          flagSize: 25,
+                          backgroundColor: Colors.white,
+                          textStyle: TextStyle(fontSize: 16, color: blackColor),
+                          bottomSheetHeight: 500,
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(20.0),
+                            topRight: Radius.circular(20.0),
+                          ),
                         ),
-                      ),
-                      onSelect: (Country country) {
-                        countryname.value = country.name;
-                        print('Select country: ${country.name}');
-                      },
-                    );
-                  },
+                        onSelect: (Country country) {
+                          countryname.value = country.name;
+                          print('Select country: ${country.name}');
+                        },
+                      );
+                    },
                   child: Padding(
                     padding: const EdgeInsets.all(defaultPadding),
                     child: Row(

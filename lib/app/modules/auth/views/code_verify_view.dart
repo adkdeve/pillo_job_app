@@ -23,6 +23,7 @@ class CodeVerifyView extends GetView<AuthController> {
   const CodeVerifyView({super.key});
   @override
   Widget build(BuildContext context) {
+    var isButtonEnabled = false.obs;
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -123,8 +124,11 @@ class CodeVerifyView extends GetView<AuthController> {
                     ),
                   ),
                 ),
-                onCompleted: (String verificationCode) {},
+                onCompleted: (String verificationCode) {
+                  isButtonEnabled.value = true;
+                },
                 onChanged: (code) {
+                  isButtonEnabled.value = false;
                   // debugPrint('onChanged: $value');
                 },
                 // cursor: const Column(
@@ -142,23 +146,26 @@ class CodeVerifyView extends GetView<AuthController> {
               (defaultPadding * 2).sbh,
               const ResendCodeWidget(),
               const Spacer(),
-              PrimaryButton(
-                text: 'Confirm',
-                onPressed: () {
-                  String type = Get.arguments ?? '';
-                  if (type == 'reset') {
-                    Get.to(() => const AddNewPasswordView());
-                  } else if (type == 'signin') {
-                    SystemChrome.setSystemUIOverlayStyle(
-                        SystemUiOverlayStyle.light.copyWith(
-                      statusBarIconBrightness: Brightness.light,
-                      statusBarColor: primaryColor,
-                    ));
-                    Get.toNamed(Routes.MAIN);
-                  } else if (type == 'signup') {
-                    Get.to(() => const ChooseLocationView());
-                  }
-                },
+              Obx(
+                () => PrimaryButton(
+                  disabled: !isButtonEnabled.value,
+                  text: 'Confirm',
+                  onPressed: () {
+                    String type = Get.arguments ?? '';
+                    if (type == 'reset') {
+                      Get.to(() => const AddNewPasswordView());
+                    } else if (type == 'signin') {
+                      SystemChrome.setSystemUIOverlayStyle(
+                          SystemUiOverlayStyle.light.copyWith(
+                        statusBarIconBrightness: Brightness.light,
+                        statusBarColor: primaryColor,
+                      ));
+                      Get.toNamed(Routes.MAIN);
+                    } else if (type == 'signup') {
+                      Get.to(() => const ChooseLocationView());
+                    }
+                  },
+                ),
               ),
               (defaultPadding * 2).sbh,
             ],

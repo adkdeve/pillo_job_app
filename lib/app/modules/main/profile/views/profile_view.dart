@@ -12,6 +12,7 @@ import 'package:pillo/app/modules/auth/views/reset_password_view.dart';
 import 'package:pillo/app/modules/main/home/views/home_view.dart';
 import 'package:pillo/app/modules/main/profile/views/account_info_view.dart';
 import 'package:pillo/app/modules/main/profile/views/help_support_view.dart';
+import 'package:pillo/app/modules/main/profile/views/my_alert_view.dart';
 import 'package:pillo/app/modules/main/profile/views/my_order_view.dart';
 import 'package:pillo/app/modules/main/profile/views/resume_pro_view.dart';
 import 'package:pillo/app/modules/main/profile/views/setting_view.dart';
@@ -36,6 +37,7 @@ class ProfileView extends GetView<ProfileController> {
       SettingItem(img: ic_account, text: 'Account Information'),
       SettingItem(img: ic_resume, text: 'Resume Pro'),
       SettingItem(img: ic_orderr, text: 'My Orders'),
+      SettingItem(img: ic_notification2, text: 'My Alerts'),
       SettingItem(img: ic_term, text: 'Help & Support'),
       SettingItem(img: ic_help, text: 'Terms & Policy'),
       SettingItem(img: ic_pass, text: 'General Settings'),
@@ -135,12 +137,14 @@ class ProfileView extends GetView<ProfileController> {
                       } else if (i == 2) {
                         Get.to(() => const MyOrderView());
                       } else if (i == 3) {
-                        Get.to(() => const HelpSupportView());
+                        Get.to(() => const MyAlertView());
                       } else if (i == 4) {
-                        Get.to(() => const TermPolicyView());
+                        Get.to(() => const HelpSupportView());
                       } else if (i == 5) {
-                        Get.to(() => const SettingView());
+                        Get.to(() => const TermPolicyView());
                       } else if (i == 6) {
+                        Get.to(() => const SettingView());
+                      } else if (i == 7) {
                         Get.to(() => const CodeVerifyView(),
                             arguments: 'reset');
                       }
