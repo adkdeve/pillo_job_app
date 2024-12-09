@@ -1312,6 +1312,8 @@ class Textedit2 extends StatelessWidget {
     this.borderRadius = 12.0,
     this.require = false,
     this.text = '',
+    this.titleFontSize = 14,
+    this.textFontSize = 16,
   });
   final String title;
   final String hintText;
@@ -1321,6 +1323,8 @@ class Textedit2 extends StatelessWidget {
   final String text;
   final int maxLines;
   final double borderRadius;
+  final double titleFontSize;
+  final double textFontSize;
   final int minLines;
   final bool require;
 
@@ -1337,7 +1341,7 @@ class Textedit2 extends StatelessWidget {
                 text: title,
                 style: GoogleFonts.inter().copyWith(
                   fontWeight: FontWeight.w600,
-                  fontSize: 14,
+                  fontSize: titleFontSize,
                   letterSpacing: 0.3,
                   color: titleTextColor,
                 ),
@@ -1346,7 +1350,7 @@ class Textedit2 extends StatelessWidget {
                 text: require ? '*' : '',
                 style: GoogleFonts.inter().copyWith(
                   fontWeight: FontWeight.w600,
-                  fontSize: 14,
+                  fontSize: titleFontSize,
                   letterSpacing: 0.3,
                   color: red,
                 ),
@@ -1393,7 +1397,7 @@ class Textedit2 extends StatelessWidget {
             minLines: minLines,
             style: GoogleFonts.inter().copyWith(
               // color: primaryColor,
-              fontSize: 16,
+              fontSize: textFontSize,
               fontWeight: FontWeight.w600,
               letterSpacing: 0.3,
             ),

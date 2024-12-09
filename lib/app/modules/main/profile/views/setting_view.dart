@@ -156,7 +156,7 @@ class SettingView extends GetView<ProfileController> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   const MyText(
-                                    text: 'Application Update',
+                                    text: 'Application and Order Update',
                                     fontSize: 14,
                                     color: color900,
                                     fontWeight: FontWeight.w500,

@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pillo/app/modules/auth/views/signup_view.dart';
 import 'package:pillo/app/modules/main/home/views/home_view.dart';
+import 'package:pillo/app/modules/main/profile/views/add_my_view_alert_view.dart';
 import 'package:pillo/app/modules/main/profile/views/my_alert_view.dart';
 import 'package:pillo/app/utils/app_colors.dart';
 import 'package:pillo/app/utils/app_config.dart';
@@ -212,7 +213,7 @@ class FilterView extends GetView<ExploreController> {
                     // 8.sbh,
                     Center(
                       child: GestureDetector(
-                        onTap: () => Get.to(() => const MyAlertView()),
+                        onTap: () => Get.to(() => const AddMyViewAlertView()),
                         child: const Padding(
                           padding: EdgeInsets.all(12),
                           child: MyText(
