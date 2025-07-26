@@ -228,6 +228,9 @@ get generate locales assets/locales
 
 ## 👨‍💻 Author
 
+* **Muhammad Ali** – Flutter Architect
+* 📧 [alee0066.aka@gmail.com](mailto:alee0066.aka@gmail.com)
+
 * **Muhammad Asad** – Flutter Architect
 * 📧 [asaddq518@gmail.com](mailto:asaddq518@gmail.com)
 
